@@ -11,6 +11,7 @@ public class TemperatureSeriesAnalysis {
     private int capacity;
     private int realSize;
     private double sum;
+    private int minTemp = -273;
 
     public TemperatureSeriesAnalysis() {
         capacity = 1;
@@ -99,7 +100,7 @@ public class TemperatureSeriesAnalysis {
 
     public int addTemps(double... addedTemps) {
         for(double temp: addedTemps){                  //check validity
-            if(temp < -273){
+            if(temp < minTemp){
                 throw new InputMismatchException();
             }
         }
@@ -124,7 +125,7 @@ public class TemperatureSeriesAnalysis {
             realSize++;
             sum += temp;
         }
-        return 0;
+        return realSize;
     }
 
     //Check if the array is empty
